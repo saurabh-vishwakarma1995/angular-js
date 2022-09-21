@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Angular JS Tutorial No: 03</title>
+</head>
+
+<!-- NG Directive for App Module-->
+<body ng-app="AppModule">
+  <div align="center">
+  	<h1>Type Text And Click Button Speak</h1>
+  	<h1>Text To Speech</h1>
+
+    <!-- NG Model Directive for Live Input Data Display -->
+    <input id="idInput" ng-model="inputData" />
+
+    <!-- Show Data from JS using double parenthesis -->
+    <h1>{{ inputData }}</h1>
+    <button id="idBtn">Speak</button>
+  </div>
+</body>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+<script type="text/javascript">
+
+  // Declaration of Constants in variable
+  var varAppModuleText = "AppModule";
+  var varAppControllerText = "AppController";
+	
+  // Store App Module in variable
+  var varAppModule = angular.module(varAppModuleText, []);
+
+  // Store App Controller in variable
+  var varAppController = varAppModule.controller(varAppControllerText, function($scope) {});
+
+  // Store Id of UI Element in Variable
+  var varIdBtn = document.getElementById("idBtn");
+  var varIdInputText = document.getElementById("idInput");
+
+  // Event Handling
+  varIdBtn.onclick = function() {
+    textToSpeech(varIdInputText.value);
+  }
+
+  // Text To Speech Functionality
+  function textToSpeech(in_strMsg) {
+    var varMsgUtteredCollected = new SpeechSynthesisUtterance();
+    varMsgUtteredCollected.text = in_strMsg;
+    speechSynthesis.speak(varMsgUtteredCollected);
+  }
+
+</script>
+</html>

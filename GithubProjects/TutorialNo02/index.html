@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Angular JS Tutorial No: 02</title>
+</head>
+
+<!-- NG Directive for App Module-->
+<body ng-app="AppModule">
+  <div align="center">
+  	<h1>Type Here for Live Typing</h1>
+
+  	<!-- NG Model Directive for Live Input Data Display -->
+    <input id="idInput" ng-model="inputData" />
+
+    <!-- Show Data from JS using double parenthesis -->
+    <h1>{{ inputData }}</h1>
+
+    <!-- NG Bind for binding data from Ng Model -->
+    <span ng-bind="inputData"></span>
+  </div>
+</body>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+<script type="text/javascript">
+
+  // Declaration of Constants in variable
+  var varAppModule = "AppModule";
+  var varAppController = "AppController";
+
+  // Store App Module in variable
+  var varAppModule = angular.module(varAppModule, []);
+
+  // Store App Controller in variable
+  var varAppController = varAppModule.controller(varAppController, function($scope) {});
+
+</script>
+</html>

@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Angular JS Tutorial No: 01</title>
+</head>
+
+<!-- NG Directive for App Module-->
+<body ng-app="AppModule">
+
+  <!-- NG Directive for Controller -->
+  <div id="idRootDiv" ng-controller="AppController">
+
+    <!-- Show Data from JS using double parenthesis -->
+    <h1 align="center">{{ title }}</h1>
+    <h2 align="center">{{ content }}</h2>
+  </div>
+</body>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+<script type="text/javascript">
+
+  // Declaration of Constants in variable
+  var varAppModule = "AppModule";
+  var varAppController = "AppController";
+  var varTitle = "Title: Angular JS";
+  var varContent = "Content: Here is Angular JS";
+
+  // Store App Module in variable
+  var varAppModule = angular.module(varAppModule, []);
+
+  // Store App Controller in variable
+  var varAppController = varAppModule.controller(varAppController, function($scope) {
+
+    // Add Values to scope variable to show in html page
+  	$scope.title = varTitle;
+  	$scope.content = varContent;
+  });
+
+</script>
+</html>
