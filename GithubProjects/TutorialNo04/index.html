@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Angular JS</title>
+  <style type="text/css">
+
+    form {
+      width: 30%;
+      height: 30%;
+      margin-left: 35%;
+      margin-right: 35%;
+      margin-bottom: 35%;
+      padding-top: 2%;
+      padding-bottom: 2%;
+      box-shadow: 1px 1px 1px 1px;
+    }
+
+    input {
+      width: 80%;
+      height: 30px;
+      padding-bottom: 2%;
+      margin-bottom: 2%;
+    }
+
+    button {
+      width: 40%;
+      height: 30px;
+      margin-left: 30%;
+      margin-right: 30%;
+      margin-bottom: 2%; 
+      font-weight: bold;
+      font-size: 14px;     
+    }
+
+    .classMargin {
+      margin-left: 10%;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+
+<body ng-app="AppModule">
+  <div id="idRootDivContainer">
+    <form ng-controller="AppController">
+      <span class="classMargin">Password</span><br>
+      <input class="classMargin" id="idFirstPasswordField" type="password" ng-model="firstPassword" ng-style="{'background-color': nStatusValidate == 0 ? 'white' : nStatusValidate == 1 ? 'green': 'red'}" /><br>
+      <span class="classMargin">Confirm Password</span><br>
+      <input class="classMargin" id="idConfirmPasswordField" type="password" ng-model="confirmPassword" ng-style="{'background-color': nStatusValidate == 0 ? 'white' : nStatusValidate == 1 ? 'green': 'red'}"/><br>
+      <button ng-click="submitAndValidate()">Submit</button>
+      <button ng-click="clearFields()">Clear</button>
+    </form>
+  </div>
+</body>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+<script type="text/javascript">
+
+  var varAppModule = angular.module("AppModule", []);
+  var varAppController = varAppModule.controller("AppController", function($scope) {
+    
+    $scope.nStatusValidate = 0;
+
+    $scope.clearFields = function() {
+      $scope.firstPassword = "";
+      $scope.confirmPassword = "";
+      $scope.nStatusValidate = 0;
+    }
+
+    $scope.submitAndValidate = function() {
+      
+      if(($scope.firstPassword == '' || $scope.firstPassword == undefined) && ($scope.confirmPassword == '' || $scope.confirmPassword == undefined)) {
+        $scope.nStatusValidate = 0;
+      } else if($scope.firstPassword.length >= 8 && $scope.firstPassword.length >= 8) {
+        if($scope.firstPassword.length == $scope.confirmPassword.length) {
+          if($scope.firstPassword == $scope.confirmPassword) {
+            $scope.nStatusValidate = 1;
+
+            var varConfirm = confirm("Success");
+            if(varConfirm) {
+              window.location.href = "https://www.google.com";
+            }
+          }
+        }
+      } else if($scope.firstPassword.length > 0 && $scope.confirmPassword.length > 0) {
+        if($scope.firstPassword.length < 8 || $scope.confirmPassword.length) {
+          alert("Password Length Must be 8 or more than it.");
+          $scope.nStatusValidate = 2;
+        } else {
+          if($scope.firstPassword != $scope.confirmPassword) {
+            $scope.nStatusValidate = 2;
+          }        
+        } 
+      }     
+    }
+  });
+
+</script>
+</html>
